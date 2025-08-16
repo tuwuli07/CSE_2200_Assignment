@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import profileImage from './assets/images.jpg';
 
 const AuthorProfile = ({ authorId, onBack }) => {
   const author = 'Nusrat Jahan Tuli';
-  const [profileImage, setProfileImage] = useState(null);
-
-  const handleImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setProfileImage(URL.createObjectURL(e.target.files[0]));
-    }
-  };
 
   return (
     <div style={{ backgroundColor: '#f1f5f9', minHeight: '100vh' }}>
@@ -53,22 +47,7 @@ const AuthorProfile = ({ authorId, onBack }) => {
               overflow: 'hidden',
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
             }}>
-              {profileImage ? (
-                <img src={profileImage} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              ) : (
-                <div style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  backgroundColor: '#3b82f6'
-                }}>
-                  <span style={{ color: 'white', fontSize: '40px', fontWeight: 'bold' }}>
-                    {author.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
-              )}
+              <img src={profileImage} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           </div>
 
@@ -79,27 +58,6 @@ const AuthorProfile = ({ authorId, onBack }) => {
                 <p style={{ color: '#64748b', marginTop: '4px' }}>@tuli_cse</p>
               </div>
               <div style={{ display: 'flex', gap: '12px' }}>
-                <input 
-                  type="file" 
-                  id="profile-image-upload"
-                  onChange={handleImageChange} 
-                  accept="image/*" 
-                  style={{ display: 'none' }} 
-                />
-                <label 
-                  htmlFor="profile-image-upload"
-                  style={{
-                    padding: '10px 20px',
-                    backgroundColor: '#f1f5f9',
-                    color: '#334155',
-                    border: 'none',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                    fontWeight: '600'
-                  }}
-                >
-                  Change Picture
-                </label>
                 <button style={{
                   padding: '10px 20px',
                   backgroundColor: '#3b82f6',

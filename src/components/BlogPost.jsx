@@ -34,6 +34,8 @@ const BlogPost = ({ post, onAuthorClick }) => {
                 background: 'none',
                 textDecoration: 'none'
               }}
+              onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
+              onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
             >
               {post.authorName}
             </button>

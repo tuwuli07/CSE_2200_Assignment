@@ -46,7 +46,7 @@ const Reactions = ({ postId, type = 'post' }) => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '4px',
+              gap: '8px',
               padding: '4px 12px',
               borderRadius: '20px',
               border: '1px solid',
@@ -58,16 +58,8 @@ const Reactions = ({ postId, type = 'post' }) => {
             }}
           >
             <span style={{ fontSize: '18px' }}>{reaction.emoji}</span>
-            <span style={{ fontSize: '14px', fontWeight: '500' }}>{reaction.label}</span>
+            <span style={{ fontSize: '14px', fontWeight: '500' }}>{reactionCounts[index]}</span>
           </button>
-        ))}
-      </div>
-
-      <div style={{ display: 'flex', gap: '16px', fontSize: '14px', color: '#6b7280' }}>
-        {reactions.map((reaction, index) => (
-          <span key={index}>
-            {reaction.label}: {reactionCounts[index]}
-          </span>
         ))}
       </div>
     </div>
