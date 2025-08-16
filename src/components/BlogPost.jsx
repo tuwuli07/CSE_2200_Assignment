@@ -23,8 +23,8 @@ const BlogPost = ({ post, onAuthorClick, showComments, onToggleComments }) => {
             fontSize: '15px',
             color: '#64748b'
           }}>
-            <img src={profileImage} alt="Profile" style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
             <span style={{ fontWeight: '600' }}>By</span>
+            <img src={profileImage} alt="Profile" style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
             <button
               onClick={() => onAuthorClick(post.authorId)}
               style={{
