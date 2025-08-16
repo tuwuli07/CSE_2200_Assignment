@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Home from './pages/Home';
-import AuthorProfile from './pages/AuthorProfile';
-import BlogPost from './pages/BlogPost';
+import AuthorProfile from './components/AuthorProfile';
+import BlogPost from './components/BlogPost';
 
 const App = () => {
   const [view, setView] = useState('home'); // 'home', 'author', 'blog'

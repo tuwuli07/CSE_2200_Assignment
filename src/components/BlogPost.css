@@ -1,0 +1,148 @@
+.blog-post-container {
+    background-color: white;
+    min-height: 100vh;
+    padding: 24px 0;
+  }
+  
+  .blog-post {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .blog-post-article {
+    padding: 24px;
+  }
+  
+  .blog-post-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    color: #64748b;
+  }
+  
+  .author-info-by {
+    font-weight: 600;
+  }
+  
+  .author-info-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .author-info-button {
+    color: #3b82f6;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-decoration: none;
+  }
+  
+  .author-info-button:hover {
+    text-decoration: underline;
+  }
+  
+  .blog-post-content p {
+    color: #334155;
+    line-height: 1.7;
+    font-size: 17px;
+  }
+  
+  .comments-section {
+    margin-top: 40px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 32px;
+  }
+  
+  .comments-toggle-button {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #1e293b;
+  }
+  
+  .comment-form {
+    margin-bottom: 24px;
+  }
+  
+  .comment-textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+  }
+  
+  .comment-textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+  
+  .comment-post-button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    .blog-post {
+      border-radius: 0;
+    }
+  
+    .blog-post-article {
+      padding: 16px;
+    }
+  
+    .blog-post-title {
+      font-size: 28px;
+    }
+  
+    .author-info {
+      font-size: 14px;
+    }
+  
+    .blog-post-content p {
+      font-size: 16px;
+    }
+  
+    .comments-toggle-button {
+      font-size: 18px;
+    }
+  
+    .comment-textarea {
+      font-size: 14px;
+    }
+  
+    .comment-post-button {
+      font-size: 14px;
+    }
+  }
+  
