@@ -1,7 +1,8 @@
 import React from 'react';
 import BlogPost from './BlogPost';
+import Pagination from './Pagination';
 
-const Home = ({ onAuthorClick, onBlogClick, currentPage, posts, postsPerPage }) => {
+const Home = ({ onAuthorClick, onBlogClick, currentPage, posts, postsPerPage, totalPages, onPageChange }) => {
   
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -17,7 +18,14 @@ const Home = ({ onAuthorClick, onBlogClick, currentPage, posts, postsPerPage }) 
           onBlogClick={() => onBlogClick(post.id)}
         />
       ))}
-    </div>
+      <div style={{ marginTop: '24px' }}>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+        />
+      </div>
+  </div>
   );
 };
 

@@ -24,7 +24,10 @@ const posts = [
     authorName: 'Nusrat Jahan Tuli',
     date: '2025-08-16',
     content: 'Have you ever wondered what it feels like to create an app that people actually use? Or to make a robot follow your commands? That’s what studying Computer Science and Engineering is all about. It’s not just coding—it’s asking “what if?” and turning ideas into reality. Yes, it’s tough at times, but isn’t solving puzzles what makes learning fun?',
-    comments: [],
+    comments: [
+      { id: 3, author: 'Reader 1', text: 'This is a great post about CSE!' },
+      { id: 4, author: 'Reader 2', text: 'I totally agree, CSE is fun.' },
+    ],
   },
 ];
 
@@ -63,20 +66,15 @@ const App = () => {
           currentPage={currentPage}
           posts={posts}
           postsPerPage={postsPerPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
         />
       )}
       {view === 'author' && (
         <AuthorProfile authorId={selectedId} onBack={handleBackToHome} />
       )}
       {view === 'blog' && (
-        <BlogPost blogId={selectedId} onBack={handleBackToHome} />
-      )}
-      {view === 'home' && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+        <BlogPost blogId={selectedId} />
       )}
     </div>
   );
