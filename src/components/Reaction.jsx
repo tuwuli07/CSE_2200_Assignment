@@ -21,8 +21,11 @@ const Reactions = ({ postId, type = 'post' }) => {
       }).map(([key, value]) => [key, Math.floor(Math.random() * 201)])
     )
   );
+  const [clickedEmoji, setClickedEmoji] = useState(null);
 
   const handleReactionClick = (index) => {
+    setClickedEmoji(index);
+    setTimeout(() => setClickedEmoji(null), 300);
     setReactionCounts(prev => {
       const newCounts = { ...prev };
 
@@ -58,7 +61,8 @@ const Reactions = ({ postId, type = 'post' }) => {
               borderColor: activeReaction === index ? '#93c5fd' : '#e5e7eb',
               color: activeReaction === index ? '#1d4ed8' : '#374151',
               cursor: 'pointer',
-              transition: 'all 0.2s'
+              transition: 'all 0.2s',
+              transform: clickedEmoji === index ? 'translateY(-5px)' : 'translateY(0)'
             }}
           >
             <span style={{ fontSize: '18px' }}>{reaction.emoji}</span>

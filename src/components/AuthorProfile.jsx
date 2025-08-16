@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import profileImage from './assets/images.jpg';
 
 const AuthorProfile = ({ authorId, onBack }) => {
   const author = 'Nusrat Jahan Tuli';
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleFollow = () => {
+    setIsFollowing(!isFollowing);
+    if (!isFollowing) {
+      setShowPopup(true);
+    }
+  };
+
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
 
   return (
     <div style={{ backgroundColor: '#f1f5f9', minHeight: '100vh' }}>
@@ -58,16 +76,21 @@ const AuthorProfile = ({ authorId, onBack }) => {
                 <p style={{ color: '#64748b', marginTop: '4px' }}>@tuli_cse</p>
               </div>
               <div style={{ display: 'flex', gap: '12px' }}>
-                <button style={{
-                  padding: '10px 20px',
-                  backgroundColor: '#3b82f6',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  fontWeight: '600'
-                }}>
-                  Follow
+                <button 
+                  onClick={handleFollow}
+                  style={{
+                    padding: '10px 20px',
+                    backgroundColor: isFollowing ? 'white' : '#3b82f6',
+                    color: isFollowing ? 'black' : 'white',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontWeight: '600',
+                    minWidth: '100px',
+                    transition: 'background-color 0.3s'
+                  }}
+                >
+                  {isFollowing ? 'Following' : 'Follow'}
                 </button>
               </div>
             </div>
@@ -94,8 +117,27 @@ const AuthorProfile = ({ authorId, onBack }) => {
           </div>
         </div>
       </div>
+      {showPopup && (
+        <div style={{
+          position: 'fixed',
+          bottom: '20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          backgroundColor: 'white',
+          color: 'black',
+          padding: '12px 24px',
+          borderRadius: '8px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          zIndex: '1000',
+          fontSize: '16px',
+          border: '1px solid #e2e8f0',
+        }}>
+          You started following {author}
+        </div>
+      )}
     </div>
   );
 };
+
 
 export default AuthorProfile;

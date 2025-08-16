@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Reaction from './Reaction';
 import Comment from './Comment';
 
-const BlogPost = ({ post, onAuthorClick }) => {
-  const [showComments, setShowComments] = useState(false);
+const BlogPost = ({ post, onAuthorClick, showComments, onToggleComments }) => {
 
   return (
     <div style={{ backgroundColor: 'white', minHeight: '100vh', padding: '24px 0' }}>
@@ -51,7 +50,7 @@ const BlogPost = ({ post, onAuthorClick }) => {
 
           <div style={{ marginTop: '40px', borderTop: '1px solid #e2e8f0', paddingTop: '32px' }}>
             {post.comments.length > 0 && <button 
-              onClick={() => setShowComments(!showComments)}
+              onClick={onToggleComments}
               style={{
                 fontSize: '20px',
                 fontWeight: '700',
