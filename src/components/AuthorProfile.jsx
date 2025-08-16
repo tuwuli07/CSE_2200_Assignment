@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AuthorProfile = ({ authorId, onBack }) => {
   const author = `Nusrat Jahan Tuli ${authorId}`;
-  
+  const [profileImage, setProfileImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setProfileImage(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
   return (
     <div style={{ maxWidth: '768px', margin: '0 auto', padding: '24px' }}>
       <button 
@@ -29,12 +36,24 @@ const AuthorProfile = ({ authorId, onBack }) => {
           margin: '0 auto 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          overflow: 'hidden'
         }}>
-          <span style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>
-            {author.split(' ').map(n => n[0]).join('')}
-          </span>
+          {profileImage ? (
+            <img src={profileImage} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          ) : (
+            <span style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>
+              {author.split(' ').map(n => n[0]).join('')}
+            </span>
+          )}
         </div>
+
+        <input 
+          type="file" 
+          onChange={handleImageChange} 
+          accept="image/*" 
+          style={{ display: 'block', margin: '0 auto 16px' }} 
+        />
 
         <h2 style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '8px' }}>{author}</h2>
         <p style={{ color: '#6b7280', marginBottom: '16px' }}>Student of AUST CSE</p>

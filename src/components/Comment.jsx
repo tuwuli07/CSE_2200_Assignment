@@ -31,22 +31,9 @@ const Comment = ({ comment }) => {
       <p style={{ color: '#374151', fontSize: '14px', marginBottom: '12px', lineHeight: '1.5' }}>
         {comment.content}
       </p>
-      <div style={{ display: 'flex', gap: '8px' }}>
-        <button style={buttonStyle}>Like</button>
-        <button style={buttonStyle}>Dislike</button>
-        <button style={buttonStyle}>Reply</button>
-      </div>
       <Reaction postId={`comment-${comment.id}`} type="comment" />
     </div>
   );
-};
-
-const buttonStyle = {
-  fontSize: '12px',
-  color: '#6b7280',
-  cursor: 'pointer',
-  border: 'none',
-  background: 'none'
 };
 
 export default Comment;

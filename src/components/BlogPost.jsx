@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Reaction from './Reaction';
 import Comment from './Comment';
 
 const BlogPost = ({ post, onAuthorClick }) => {
+  const [showComments, setShowComments] = useState(false);
+
   return (
     <article style={{
-      backgroundColor: 'white',
-      borderRadius: '8px',
+      backgroundColor: '#f3f4f6',
+      borderRadius: '30px',
       border: '1px solid #e5e7eb',
       padding: '24px',
       marginBottom: '24px'
@@ -48,52 +50,67 @@ const BlogPost = ({ post, onAuthorClick }) => {
       <Reaction postId={post.id} />
 
       <div style={{ marginTop: '32px', borderTop: '1px solid #e5e7eb', paddingTop: '24px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '16px' }}>
-          {post.comments.length} Comments
-        </h3>
-
-        <div style={{ marginBottom: '24px' }}>
-          <textarea
-            placeholder="Write your comment..."
-            style={{
-              width: '100%',
-              padding: '12px',
-              border: '1px solid #d1d5db',
-              borderRadius: '8px',
-              resize: 'none',
-              fontSize: '14px',
-              fontFamily: 'inherit',
-              outline: 'none'
-            }}
-            rows="3"
-            onFocus={(e) => {
-              e.target.style.borderColor = '#3b82f6';
-              e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = '#d1d5db';
-              e.target.style.boxShadow = 'none';
-            }}
-          />
-          <button style={{
-            marginTop: '8px',
-            padding: '8px 16px',
-            backgroundColor: '#3b82f6',
-            color: 'white',
+        <button 
+          onClick={() => setShowComments(!showComments)}
+          style={{
+            fontSize: '18px',
+            fontWeight: '600',
+            marginBottom: '16px',
             border: 'none',
-            borderRadius: '6px',
+            background: 'none',
             cursor: 'pointer',
-            fontSize: '14px'
-          }}>
-            Post Comment
-          </button>
-        </div>
+            color: '#111827'
+          }}
+        >
+          {post.comments.length} Comments {showComments ? '▲' : '▼'}
+        </button>
 
-        <div>
-          {post.comments.map(comment => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
-        </div>
+        {showComments && (
+          <>
+            <div style={{ marginBottom: '24px' }}>
+              <textarea
+                placeholder="Write your comment..."
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  border: '1px solid #d1d5db',
+                  borderRadius: '8px',
+                  resize: 'none',
+                  fontSize: '14px',
+                  fontFamily: 'inherit',
+                  outline: 'none'
+                }}
+                rows="3"
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#3b82f6';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
+                }}
+              />
+              <button style={{
+                marginTop: '8px',
+                padding: '8px 16px',
+                backgroundColor: '#3b82f6',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '14px'
+              }}>
+                Post Comment
+              </button>
+            </div>
+
+            <div>
+              {post.comments.map(comment => (
+                <Comment key={comment.id} comment={comment} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </article>
   );
