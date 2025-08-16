@@ -10,13 +10,17 @@ const reactions = [
 
 const Reactions = ({ postId, type = 'post' }) => {
   const [activeReaction, setActiveReaction] = useState(null);
-  const [reactionCounts, setReactionCounts] = useState({
-    0: 42,
-    1: 156,
-    2: 0,
-    3: 8,
-    4: 12
-  });
+  const [reactionCounts, setReactionCounts] = useState(
+    Object.fromEntries(
+      Object.entries({
+        0: 42,
+        1: 156,
+        2: 0,
+        3: 8,
+        4: 12
+      }).map(([key, value]) => [key, Math.floor(Math.random() * 201)])
+    )
+  );
 
   const handleReactionClick = (index) => {
     setReactionCounts(prev => {
