@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const getPageNumbers = () => {
@@ -28,17 +29,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: '8px',
-      marginTop: '32px'
-    }}>
+    <div className="pagination-container">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        style={btnStyle(currentPage === 1)}
+        className="pagination-button"
       >
         Previous
       </button>
@@ -47,17 +42,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           key={index}
           onClick={() => typeof page === 'number' && onPageChange(page)}
-          disabled={page === '...'}
-          style={{
-            padding: '8px 12px',
-            border: '1px solid #e5e7eb',
-            borderRadius: '6px',
-            fontSize: '14px',
-            cursor: page === '...' ? 'default' : 'pointer',
-            backgroundColor: page === currentPage ? '#3b82f6' : '#ffffff',
-            color: page === currentPage ? 'white' : '#374151',
-            borderColor: page === currentPage ? '#3b82f6' : '#e5e7eb'
-          }}
+          className={`pagination-button ${page === currentPage ? 'active' : ''} ${page === '...' ? 'disabled' : ''}`}
         >
           {page}
         </button>
@@ -66,22 +51,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        style={btnStyle(currentPage === totalPages)}
+        className="pagination-button"
       >
         Next
       </button>
     </div>
   );
 };
-
-const btnStyle = (disabled) => ({
-  padding: '8px 12px',
-  border: '1px solid #e5e7eb',
-  borderRadius: '6px',
-  fontSize: '14px',
-  cursor: disabled ? 'not-allowed' : 'pointer',
-  opacity: disabled ? 0.5 : 1,
-  backgroundColor: '#f9fafb'
-});
 
 export default Pagination;

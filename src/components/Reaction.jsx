@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const reactions = [
   { emoji: '👍', label: 'Like' },
   { emoji: '❤️', label: 'Love' },
+  { emoji: '😂', label: 'Haha' },
   { emoji: '😠', label: 'Angry' },
   { emoji: '😢', label: 'Sad' }
 ];
@@ -12,8 +13,9 @@ const Reactions = ({ postId, type = 'post' }) => {
   const [reactionCounts, setReactionCounts] = useState({
     0: 42,
     1: 156,
-    2: 8,
-    3: 12
+    2: 0,
+    3: 8,
+    4: 12
   });
 
   const handleReactionClick = (index) => {
