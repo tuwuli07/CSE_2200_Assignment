@@ -50,7 +50,7 @@ const BlogPost = ({ post, onAuthorClick }) => {
       <Reaction postId={post.id} />
 
       <div style={{ marginTop: '32px', borderTop: '1px solid #e5e7eb', paddingTop: '24px' }}>
-        <button 
+        {post.comments.length > 0 && <button 
           onClick={() => setShowComments(!showComments)}
           style={{
             fontSize: '18px',
@@ -63,7 +63,7 @@ const BlogPost = ({ post, onAuthorClick }) => {
           }}
         >
           {post.comments.length} Comments {showComments ? '▲' : '▼'}
-        </button>
+        </button>}
 
         {showComments && (
           <>

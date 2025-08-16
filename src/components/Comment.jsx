@@ -29,7 +29,7 @@ const Comment = ({ comment }) => {
         </div>
       </div>
       <p style={{ color: '#374151', fontSize: '14px', marginBottom: '12px', lineHeight: '1.5' }}>
-        {comment.content}
+        {comment.text}
       </p>
       <Reaction postId={`comment-${comment.id}`} type="comment" />
     </div>
